@@ -18,5 +18,14 @@
       <itunes:duration>00:08:15</itunes:duration>
     </item>
 
-  </channel>
+  
+    <item>
+      <title><![CDATA[How I Use Clawdbot (Kristian Freeman)]]></title>
+      <description><![CDATA[A practical field report on turning a chat interface into an always-on control plane using skills, model routing, and tight trust boundaries.]]></description>
+      <link>https://kristianfreeman.com/how-i-use-clawdbot</link>
+      <guid isPermaLink="false">https://drive.google.com/uc?export=download&id=1X5GeutzTvDdWGZkhMhNsQYh-w1BMU7yY</guid>
+      <pubDate>Tue, 27 Jan 2026 05:59:44 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&id=1X5GeutzTvDdWGZkhMhNsQYh-w1BMU7yY" length="0" type="audio/mpeg"/>
+    </item>
+</channel>
 </rss>
