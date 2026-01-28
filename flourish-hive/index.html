@@ -3,16 +3,386 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flourish Hive</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Flourish Hive — Private Podcast</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; max-width: 760px; margin: 40px auto; padding: 0 16px; line-height: 1.5; }
-    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1620;
+      --panel2:#101a26;
+      --text:#e8eef7;
+      --muted:#a8b3c3;
+      --border:rgba(255,255,255,0.10);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --good:#34d399;
+      --warn:#fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius:16px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(167,139,250,0.18), transparent 60%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(125,211,252,0.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    a{color:inherit; text-decoration: none;}
+    a:hover{text-decoration: underline;}
+
+    .wrap{max-width:960px; margin:0 auto; padding:28px 18px 64px;}
+
+    header{
+      display:flex; gap:18px; align-items:center;
+      padding:18px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .art{
+      width:92px; height:92px; border-radius: 18px;
+      overflow:hidden; flex: 0 0 auto;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .art img{width:100%; height:100%; object-fit:cover; display:block;}
+
+    .meta{min-width:0}
+    .title{
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:0.2px;
+      margin:0 0 6px;
+    }
+    .desc{margin:0; color:var(--muted); font-size:14px; max-width: 60ch;}
+
+    .pillrow{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;}
+    .pill{
+      font-size:12px;
+      color:rgba(232,238,247,0.9);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      padding:6px 10px;
+      border-radius: 999px;
+    }
+
+    .status{
+      margin:16px 4px 0;
+      color:var(--muted);
+      font-size:13px;
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .spinner{
+      width:14px; height:14px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,0.2);
+      border-top-color: var(--accent);
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin{to{transform: rotate(360deg)}}
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+
+    .ep{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+
+    .ep-inner{padding:14px 14px 12px;}
+
+    .ep-top{
+      display:flex; gap:10px; align-items:flex-start; justify-content: space-between;
+    }
+
+    .ep-title{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+      line-height:1.25;
+    }
+
+    .ep-date{margin-top:6px; color:var(--muted); font-size:12px;}
+
+    .badge{
+      margin-left:10px;
+      font-size:11px;
+      color:#0b0f14;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .audio{
+      margin-top:10px;
+      width:100%;
+      accent-color: var(--accent);
+    }
+
+    details{
+      margin-top:10px;
+      border-top:1px solid var(--border);
+      padding-top:10px;
+    }
+
+    summary{
+      cursor:pointer;
+      color: rgba(232,238,247,0.92);
+      font-size:13px;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+
+    .summary-hint{color: var(--muted)}
+
+    .ep-desc{
+      margin:10px 0 0;
+      color: rgba(232,238,247,0.92);
+      font-size:13px;
+      white-space: pre-wrap;
+    }
+
+    footer{
+      margin-top:18px;
+      color: var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+
+    .error{
+      color: rgba(255,255,255,0.92);
+      background: rgba(251,113,133,0.12);
+      border: 1px solid rgba(251,113,133,0.25);
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 820px){
+      .grid{grid-template-columns: 1fr;}
+      header{padding:20px;}
+      .art{width:104px; height:104px;}
+      .title{font-size:22px;}
+    }
   </style>
 </head>
 <body>
-  <h1>Flourish Hive</h1>
-  <p>A personalized daily memo podcast demo for Evan Baehr.</p>
-  <p><a href="feed.xml">RSS feed</a></p>
-  <p>Cover art: <code>cover.png</code></p>
+  <div class="wrap">
+    <header>
+      <div class="art">
+        <img id="podcastArt" src="cover.png" alt="Podcast cover" />
+      </div>
+      <div class="meta">
+        <h1 id="podcastTitle" class="title">Flourish Hive</h1>
+        <p id="podcastDesc" class="desc">Loading…</p>
+        <div class="pillrow">
+          <span class="pill">Private feed</span>
+          <span class="pill">Plays in your browser</span>
+          <a class="pill" id="rssLink" href="#" target="_blank" rel="noopener">RSS</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="status" class="status">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>Loading episodes…</span>
+    </div>
+
+    <div id="error" class="error" style="display:none"></div>
+
+    <main id="episodes" class="grid" aria-live="polite"></main>
+
+    <footer>
+      This is a private podcast. Best experienced in a podcast app, but playable here.
+    </footer>
+  </div>
+
+  <script>
+    const FEED_URL = 'https://thanhpham87.github.io/flourish-hive/feed.xml';
+
+    const $ = (sel) => document.querySelector(sel);
+    const episodesEl = $('#episodes');
+    const statusEl = $('#status');
+    const errorEl = $('#error');
+
+    function setStatus(text){
+      statusEl.style.display = 'flex';
+      statusEl.querySelector('span:last-child').textContent = text;
+    }
+
+    function hideStatus(){
+      statusEl.style.display = 'none';
+    }
+
+    function showError(msg){
+      errorEl.style.display = 'block';
+      errorEl.textContent = msg;
+    }
+
+    function stripHtml(html){
+      const div = document.createElement('div');
+      div.innerHTML = html || '';
+      return (div.textContent || div.innerText || '').trim();
+    }
+
+    function parseFeed(xmlText){
+      const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+      const channel = doc.querySelector('channel');
+      if(!channel) throw new Error('Invalid RSS feed: missing channel');
+
+      const title = channel.querySelector('title')?.textContent?.trim() || 'Podcast';
+      const desc = channel.querySelector('description')?.textContent?.trim() || '';
+      const itunesImage = channel.querySelector('itunes\\:image')?.getAttribute('href');
+
+      const items = [...channel.querySelectorAll('item')].map((item) => {
+        const t = item.querySelector('title')?.textContent?.trim() || 'Episode';
+        const pub = item.querySelector('pubDate')?.textContent?.trim() || '';
+        const dHtml = item.querySelector('description')?.textContent || '';
+        const d = stripHtml(dHtml);
+        const enclosure = item.querySelector('enclosure');
+        const audioUrl = enclosure?.getAttribute('url') || '';
+        return { title: t, pubDate: pub, description: d, audioUrl };
+      });
+
+      // newest first: RSS usually already is, but enforce
+      items.sort((a,b)=> new Date(b.pubDate) - new Date(a.pubDate));
+
+      return { title, desc, image: itunesImage, items };
+    }
+
+    function formatDate(pubDate){
+      const d = new Date(pubDate);
+      if(Number.isNaN(d.getTime())) return pubDate;
+      return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+    }
+
+    function render(feed){
+      $('#podcastTitle').textContent = feed.title;
+      $('#podcastDesc').textContent = feed.desc;
+      $('#rssLink').href = FEED_URL;
+
+      if(feed.image){
+        $('#podcastArt').src = feed.image;
+      }
+
+      episodesEl.innerHTML = '';
+
+      if(!feed.items.length){
+        episodesEl.innerHTML = '<div class="error">No episodes found in this feed.</div>';
+        return;
+      }
+
+      const audios = [];
+
+      feed.items.forEach((ep, idx) => {
+        const card = document.createElement('section');
+        card.className = 'ep';
+
+        const inner = document.createElement('div');
+        inner.className = 'ep-inner';
+
+        const top = document.createElement('div');
+        top.className = 'ep-top';
+
+        const left = document.createElement('div');
+        const h = document.createElement('h2');
+        h.className = 'ep-title';
+        h.textContent = ep.title;
+
+        const date = document.createElement('div');
+        date.className = 'ep-date';
+        date.textContent = formatDate(ep.pubDate);
+
+        left.appendChild(h);
+        left.appendChild(date);
+
+        top.appendChild(left);
+
+        if(idx === 0){
+          const badge = document.createElement('div');
+          badge.className = 'badge';
+          badge.textContent = 'Latest';
+          top.appendChild(badge);
+        }
+
+        const audio = document.createElement('audio');
+        audio.className = 'audio';
+        audio.controls = true;
+        audio.preload = 'none';
+        audio.src = ep.audioUrl;
+        audios.push(audio);
+
+        // Ensure only one plays at a time
+        audio.addEventListener('play', () => {
+          audios.forEach(a => { if(a !== audio) a.pause(); });
+          card.animate([
+            { transform: 'translateY(0px)', boxShadow: '0 0 0 rgba(0,0,0,0)' },
+            { transform: 'translateY(-2px)', boxShadow: '0 12px 34px rgba(0,0,0,0.38)' },
+            { transform: 'translateY(0px)', boxShadow: '0 10px 30px rgba(0,0,0,0.35)' }
+          ], { duration: 260, easing: 'ease-out' });
+        });
+
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        const hint = document.createElement('span');
+        hint.className = 'summary-hint';
+        hint.textContent = ep.description ? 'Show description' : 'No description';
+        summary.appendChild(hint);
+        details.appendChild(summary);
+
+        if(ep.description){
+          const p = document.createElement('p');
+          p.className = 'ep-desc';
+          p.textContent = ep.description;
+          details.appendChild(p);
+        }
+
+        inner.appendChild(top);
+        inner.appendChild(audio);
+        inner.appendChild(details);
+
+        card.appendChild(inner);
+        episodesEl.appendChild(card);
+      });
+    }
+
+    async function load(){
+      try{
+        setStatus('Loading episodes…');
+        $('#rssLink').textContent = 'RSS';
+        $('#rssLink').href = FEED_URL;
+
+        const res = await fetch(FEED_URL, { cache: 'no-store' });
+        if(!res.ok) throw new Error(`Feed fetch failed: ${res.status}`);
+        const xml = await res.text();
+        const feed = parseFeed(xml);
+        render(feed);
+        hideStatus();
+      } catch (err){
+        console.error(err);
+        hideStatus();
+        showError('Could not load the podcast feed. If this keeps happening, try opening the RSS link directly in a browser or a podcast app.');
+      }
+    }
+
+    load();
+  </script>
 </body>
 </html>
