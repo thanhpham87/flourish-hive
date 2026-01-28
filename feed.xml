@@ -1,62 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
-    <title>Bookmarks Podcast</title>
+    <title>Flourish Hive</title>
     <link>https://drive.google.com/drive/folders/1dRkDlPN2HrA3GSBLYYQY6vV5FGccfYrf</link>
-    <description>Daily audio notes generated from Thanh's saved reading/bookmarks (Instapaper today; more sources later). Unlisted feed.</description>
+    <description>A personalized daily memo for Evan Baehr — meeting intel, schedule summaries, and prompts to compound relationships and decisions. One-time demo episode.</description>
     <language>en-us</language>
     <itunes:author>Thanh Pham</itunes:author>
     <itunes:explicit>no</itunes:explicit>
-    <itunes:image href="https://thanhpham87.github.io/bookmarks-podcast/cover.png" />
+    <itunes:image href="https://thanhpham87.github.io/flourish-hive/cover.png" />
 
     <item>
-      <title>Dario Amodei — The Adolescence of Technology</title>
-      <description><![CDATA[Instapaper audio note summary (Laura).]]></description>
-      <pubDate>Tue, 27 Jan 2026 04:36:00 GMT</pubDate>
-      <guid isPermaLink="false">instapaper-1967978907-2026-01-26</guid>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=17YlmJOcwCuX0h7GFZkGHdXCGkWQMZwXU" length="7923710" type="audio/mpeg" />
-      <itunes:duration>00:08:15</itunes:duration>
+      <title>Wednesday Briefing — Jan 28, 2026</title>
+      <description><![CDATA[Protected focus time, then four high-signal meetings (AI sentiment, Austin CRE intel, relationship system design, partnership strategy).]]></description>
+      <pubDate>Wed, 28 Jan 2026 00:46:49 GMT</pubDate>
+      <guid isPermaLink="false">flourish-hive-evan-2026-01-28</guid>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1LIKiJQ_3VGWoFUMq95AqyY51kh9iP6Ar" length="9906936" type="audio/mpeg" />
+      <itunes:duration>00:10:19</itunes:duration>
     </item>
 
-  
-    <item>
-      <title><![CDATA[How I Use Clawdbot (Kristian Freeman)]]></title>
-      <description><![CDATA[A practical field report on turning a chat interface into an always-on control plane using skills, model routing, and tight trust boundaries.]]></description>
-      <link>https://kristianfreeman.com/how-i-use-clawdbot</link>
-      <guid isPermaLink="false">https://drive.google.com/uc?export=download&amp;id=1X5GeutzTvDdWGZkhMhNsQYh-w1BMU7yY</guid>
-      <pubDate>Tue, 27 Jan 2026 05:59:44 +0000</pubDate>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1X5GeutzTvDdWGZkhMhNsQYh-w1BMU7yY" length="3064320" type="audio/mpeg" />
-      <itunes:duration>00:03:12</itunes:duration>
-    </item>
-
-    <item>
-      <title><![CDATA[Clawdbot: The Future of Personal AI Assistants (MacStories)]]></title>
-      <description><![CDATA[A hands-on look at why chat-based agents become real assistants only when they can reliably execute workflows through tools and skills.]]></description>
-      <link>https://www.macstories.net/stories/clawdbot-showed-me-what-the-future-of-personal-ai-assistants-looks-like/</link>
-      <guid isPermaLink="false">https://drive.google.com/uc?export=download&amp;id=1rQtWwWi70dgTm1TaSiWZuKtsB-D1J8c1</guid>
-      <pubDate>Tue, 27 Jan 2026 06:19:30 +0000</pubDate>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1rQtWwWi70dgTm1TaSiWZuKtsB-D1J8c1" length="3136128" type="audio/mpeg" />
-      <itunes:duration>00:03:16</itunes:duration>
-    </item>
-
-    <item>
-      <title><![CDATA[AI Will Change Private Markets (Colossus)]]></title>
-      <description><![CDATA[A Bloomberg-Terminal-style argument for how AI will compress diligence and synthesis, reshaping private-market workflows and strategies.]]></description>
-      <link>https://colossus.com/article/are-we-underestimating-how-ai-will-change-private-markets/</link>
-      <guid isPermaLink="false">https://drive.google.com/uc?export=download&amp;id=1V2TB-X7bm_hLtIjht0KQvrgwFCRql-YA</guid>
-      <pubDate>Tue, 27 Jan 2026 06:30:06 +0000</pubDate>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1V2TB-X7bm_hLtIjht0KQvrgwFCRql-YA" length="3415296" type="audio/mpeg" />
-      <itunes:duration>00:03:33</itunes:duration>
-    </item>
-
-    <item>
-      <title><![CDATA[Compound Engineering (Every)]]></title>
-      <description><![CDATA[A practical workflow for shipping with coding agents: Plan → Work → Assess → Compound, with compounding coming from capturing learnings so future agents don’t repeat mistakes.]]></description>
-      <link>https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents</link>
-      <guid isPermaLink="false">https://drive.google.com/uc?export=download&amp;id=1UqnWzBGysePe1zUJs9K03DetgtB3tQ45</guid>
-      <pubDate>Tue, 27 Jan 2026 18:05:30 +0000</pubDate>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1UqnWzBGysePe1zUJs9K03DetgtB3tQ45" length="2905728" type="audio/mpeg" />
-      <itunes:duration>00:03:02</itunes:duration>
-    </item>
-</channel>
+  </channel>
 </rss>
