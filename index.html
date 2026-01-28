@@ -331,8 +331,15 @@
         audio.className = 'audio';
         audio.controls = true;
         audio.preload = 'none';
+        audio.crossOrigin = 'anonymous';
         audio.src = ep.audioUrl;
         audios.push(audio);
+
+        const direct = document.createElement('div');
+        direct.style.marginTop = '8px';
+        direct.style.fontSize = '12px';
+        direct.style.color = 'var(--muted)';
+        direct.innerHTML = `If playback fails, <a href="${ep.audioUrl}" target="_blank" rel="noopener">open the audio file</a>.`;
 
         // Ensure only one plays at a time
         audio.addEventListener('play', () => {
@@ -361,6 +368,7 @@
 
         inner.appendChild(top);
         inner.appendChild(audio);
+        inner.appendChild(direct);
         inner.appendChild(details);
 
         card.appendChild(inner);
