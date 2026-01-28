@@ -378,10 +378,11 @@
         });
 
         const details = document.createElement('details');
+        details.open = true;
         const summary = document.createElement('summary');
         const hint = document.createElement('span');
         hint.className = 'summary-hint';
-        hint.textContent = ep.description ? 'Show description' : 'No description';
+        hint.textContent = ep.description ? 'Description' : 'No description';
         summary.appendChild(hint);
         details.appendChild(summary);
 
