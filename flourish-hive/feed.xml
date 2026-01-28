@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Flourish Hive</title>
+    <link>https://drive.google.com/drive/folders/1dRkDlPN2HrA3GSBLYYQY6vV5FGccfYrf</link>
+    <description>A personalized daily memo for Evan Baehr — meeting intel, schedule summaries, and prompts to compound relationships and decisions. One-time demo episode.</description>
+    <language>en-us</language>
+    <itunes:author>Thanh Pham</itunes:author>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:image href="https://thanhpham87.github.io/flourish-hive/cover.png" />
+
+    <item>
+      <title>Wednesday Briefing — Jan 28, 2026</title>
+      <description><![CDATA[Protected focus time, then four high-signal meetings (AI sentiment, Austin CRE intel, relationship system design, partnership strategy).]]></description>
+      <pubDate>Wed, 28 Jan 2026 00:46:49 GMT</pubDate>
+      <guid isPermaLink="false">flourish-hive-evan-2026-01-28</guid>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1LIKiJQ_3VGWoFUMq95AqyY51kh9iP6Ar" length="9906936" type="audio/mpeg" />
+      <itunes:duration>00:10:19</itunes:duration>
+    </item>
+
+  </channel>
+</rss>
