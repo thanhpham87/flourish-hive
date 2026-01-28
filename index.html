@@ -278,6 +278,18 @@
       return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
     }
 
+    // Convert Google Drive download URL to a direct streaming URL
+    function getStreamableUrl(url) {
+      // Check if it's a Google Drive URL
+      const driveMatch = url.match(/drive\.google\.com\/uc\?export=download&id=([^&]+)/);
+      if (driveMatch) {
+        const fileId = driveMatch[1];
+        // Use the direct download format that works better for streaming
+        return `https://drive.google.com/uc?export=download&id=${fileId}`;
+      }
+      return url;
+    }
+
     function render(feed){
       $('#podcastTitle').textContent = feed.title;
       $('#podcastDesc').textContent = feed.desc;
@@ -327,13 +339,27 @@
           top.appendChild(badge);
         }
 
+        const streamUrl = getStreamableUrl(ep.audioUrl);
+
         const audio = document.createElement('audio');
         audio.className = 'audio';
         audio.controls = true;
         audio.preload = 'none';
-        audio.crossOrigin = 'anonymous';
-        audio.src = ep.audioUrl;
+        // Removed crossOrigin to avoid CORS issues with Google Drive
+        audio.src = streamUrl;
         audios.push(audio);
+
+        // Add error handling for audio playback
+        audio.addEventListener('error', (e) => {
+          console.error('Audio error:', e);
+          const errorMsg = document.createElement('div');
+          errorMsg.style.cssText = 'margin-top:8px; padding:8px 12px; background:rgba(251,113,133,0.12); border:1px solid rgba(251,113,133,0.25); border-radius:8px; font-size:12px; color:var(--muted);';
+          errorMsg.innerHTML = 'Playback failed. Google Drive may be blocking direct playback. <a href="' + ep.audioUrl + '" target="_blank" rel="noopener" style="color:var(--accent);">Download the file</a> or open it in a new tab.';
+          if (!audio.nextElementSibling?.classList?.contains('audio-error')) {
+            errorMsg.classList.add('audio-error');
+            audio.parentNode.insertBefore(errorMsg, audio.nextSibling);
+          }
+        });
 
         const direct = document.createElement('div');
         direct.style.marginTop = '8px';
